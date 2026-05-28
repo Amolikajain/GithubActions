@@ -27,7 +27,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: All Type of Variables and Secrets
-        run: echo  "$author has created the api $baseapi which will expire in $expire"
+        run: |
+          echo "Workflow Variables | $author has created the api $baseapi which will expire in $expire"
+          echo "Configuration Variable | Version of App is ${{ vars.VERSION }}"
+          echo "Secret| Secret Key is ${{ vars.secrets_KEY }}"
+          ${{secrets.KEY_VISIBLE}}
         env:
            expire: 10days
 
