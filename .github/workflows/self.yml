@@ -1,26 +1,21 @@
 name: Test Self Hosted Runner
+
 on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
 
-
-  jobs:
+jobs:
   build:
-   
+
     runs-on: self-hosted
 
-    
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      
-      - name:System Info
+      - name: System Info
+        shell: powershell
         run: |
-          uname -a
-          sw_vers
-          python --version || echo "Python Not Found"
-
-
-      
+          systeminfo
+          python --version
